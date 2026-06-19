@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>番茄钟</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- 计时器区域 -->
+    <div class="timer-section">
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="work">工作</button>
+        <button class="mode-tab" data-mode="shortBreak">短休息</button>
+        <button class="mode-tab" data-mode="longBreak">长休息</button>
+      </div>
+
+      <div class="timer-display">
+        <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+      </div>
+
+      <div class="pomodoro-count">
+        <span>🍅</span> <span id="pomodoro-count">0</span>
+      </div>
+
+      <div class="timer-controls">
+        <button id="btn-start" class="btn btn-primary">开始</button>
+        <button id="btn-pause" class="btn btn-secondary" style="display:none;">暂停</button>
+        <button id="btn-reset" class="btn btn-outline">重置</button>
+      </div>
+    </div>
+
+    <!-- 任务区域 -->
+    <div class="tasks-section">
+      <div class="section-header">
+        <h2>任务列表</h2>
+        <button id="btn-add-task" class="btn btn-small">+ 添加</button>
+      </div>
+
+      <div id="task-input-area" class="task-input-area" style="display:none;">
+        <input type="text" id="task-input" placeholder="输入任务名称..." />
+        <input type="number" id="task-pomodoros" min="1" max="10" value="1" placeholder="预估" />
+        <button id="btn-save-task" class="btn btn-small btn-primary">保存</button>
+        <button id="btn-cancel-task" class="btn btn-small">取消</button>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+
+      <div id="empty-task" class="empty-state">
+        暂无任务，添加一个开始专注吧！
+      </div>
+    </div>
+
+    <!-- 统计区域 -->
+    <div class="stats-section">
+      <h2>统计</h2>
+      <div class="stats-cards">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-today">0</div>
+          <div class="stat-label">今日</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-week">0</div>
+          <div class="stat-label">本周</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-month">0</div>
+          <div class="stat-label">本月</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 设置区域 -->
+    <div class="settings-section">
+      <button id="btn-settings" class="btn btn-outline btn-block">⚙️ 设置</button>
+    </div>
+
+    <!-- 设置弹窗 -->
+    <div id="settings-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>设置</h3>
+          <button id="btn-close-settings" class="btn-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="setting-item">
+            <label>工作时长（分钟）</label>
+            <input type="number" id="setting-work" min="1" max="60" value="25" />
+          </div>
+          <div class="setting-item">
+            <label>短休息时长（分钟）</label>
+            <input type="number" id="setting-short-break" min="1" max="30" value="5" />
+          </div>
+          <div class="setting-item">
+            <label>长休息时长（分钟）</label>
+            <input type="number" id="setting-long-break" min="1" max="60" value="15" />
+          </div>
+          <div class="setting-item">
+            <label>长休息间隔（个番茄）</label>
+            <input type="number" id="setting-interval" min="2" max="10" value="4" />
+          </div>
+          <div class="setting-item">
+            <label>
+              <input type="checkbox" id="setting-auto-start" />
+              自动开始休息
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btn-save-settings" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

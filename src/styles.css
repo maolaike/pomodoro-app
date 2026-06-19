@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.app {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* 计时器区域 */
+.timer-section {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.mode-tab.active {
+  background: #ff6b6b;
+  color: white;
+}
+
+.timer-display {
+  font-size: 72px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.pomodoro-count {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #ff5252;
+}
+
+.btn-secondary {
+  background: #ffa500;
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ddd;
+  color: #666;
+}
+
+.btn-outline:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* 任务区域 */
+.tasks-section {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.task-input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.task-input-area input {
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.task-input-area input[type="text"] {
+  flex: 1;
+  min-width: 150px;
+}
+
+.task-input-area input[type="number"] {
+  width: 60px;
+}
+
+.task-list {
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.task-name.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-pomodoros {
+  font-size: 12px;
+  color: #ff6b6b;
+  background: #fff0f0;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.task-actions button:hover {
+  background: #f0f0f0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+/* 统计区域 */
+.stats-section {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.stats-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.stats-cards {
+  display: flex;
+  gap: 15px;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff5f5;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* 设置区域 */
+.settings-section {
+  margin-bottom: 20px;
+}
+
+/* 弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 350px;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+}
+
+.setting-item label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.setting-item input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.setting-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* 编辑模式 */
+.task-item.editing .task-name {
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 2px solid #ff6b6b;
+}
+
+.task-item input[type="text"] {
+  flex: 1;
+  padding: 4px 8px;
+  border: 2px solid #ff6b6b;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.task-item input[type="number"] {
+  width: 50px;
+  padding: 4px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  font-size: 14px;
+}
